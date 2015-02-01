@@ -34,7 +34,8 @@ def prepare_data():
 	#crime_by_month = pd.io.json.json_normalize(crime_by_month_json['features'])
 	#totals_by_crime = pd.pivot_table(crime_by_month, values='properties.TOT', index=['properties.MO'], columns=['properties.CR'], aggfunc='sum')
 	#stacked_graph_data = [{'key': crime, 'color': colors[crime], 'values': [{'x': month, 'y': total} for month, total in crimestats.iteritems()]} for crime, crimestats in totals_by_crime.to_dict().iteritems()]
-
+	
+	global graph_data
 	graph_data = json.loads(open(app.root_path + '/data/graph_data.json').read())
 
 
