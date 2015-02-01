@@ -18,6 +18,9 @@ colors = {
 	'RAPE': 'black',
 	'ROBBERY': 'blueviolet'
 }
+totals_by_crime = None
+stacked_graph_data = None
+graph_data = None
 
 def prepare_data():
 	#global all_crime_by_month_json
@@ -25,10 +28,14 @@ def prepare_data():
 	#all_crime_by_month_json = json.loads(open(app.root_path + '/data/all_crime_by_month.geojson').read())
 	#all_crime_by_month = pd.io.json.json_normalize(all_crime_by_month_json['features'])
 	
-	global crime_by_month_json
-	global crime_by_month
-	crime_by_month_json = json.loads(open(app.root_path + '/data/crime_by_month.geojson').read())
-	crime_by_month = pd.io.json.json_normalize(crime_by_month_json['features'])
+	#global crime_by_month_json
+	#global crime_by_month
+	#crime_by_month_json = json.loads(open(app.root_path + '/data/crime_by_month.geojson').read())
+	#crime_by_month = pd.io.json.json_normalize(crime_by_month_json['features'])
+	#totals_by_crime = pd.pivot_table(crime_by_month, values='properties.TOT', index=['properties.MO'], columns=['properties.CR'], aggfunc='sum')
+	#stacked_graph_data = [{'key': crime, 'color': colors[crime], 'values': [{'x': month, 'y': total} for month, total in crimestats.iteritems()]} for crime, crimestats in totals_by_crime.to_dict().iteritems()]
+
+	graph_data = json.loads(open(app.root_path + '/data/graph_data.json').read())
 
 
 @app.route('/')
@@ -46,7 +53,4 @@ def crimes():
 		},
 	]
 	"""
-	totals_by_crime = pd.pivot_table(crime_by_month, values='properties.TOT', index=['properties.MO'], columns=['properties.CR'], aggfunc='sum')
-	stacked_graph_data = [{'key': crime, 'color': colors[crime], 'values': [{'x': month, 'y': total} for month, total in crimestats.iteritems()]} for crime, crimestats in totals_by_crime.to_dict().iteritems()]
-
-	return jsonify(data=stacked_graph_data)
+	return jsonify(data=graph_data)
