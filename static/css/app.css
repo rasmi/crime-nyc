@@ -1,0 +1,19 @@
+.angular-google-map-container {
+	height: 732px;
+	/*height: 825px;*/
+}
+
+.header-container {
+	background-color: black;
+	padding-top: 1px;
+	padding-bottom: 2px;
+}
+
+.header-container h1 {
+	color: white;
+	padding-left: 40px;
+	padding-bottom: 2px;
+	font-style: italic;
+	font-family: 'Anonymous Pro';
+	font-size: 250%;
+}

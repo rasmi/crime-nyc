@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang='en' ng-app='nyc-crime'>
+<head>
+	<meta charset='utf-8'>
+	<title>NYC Crime</title>
+	<link href='http://fonts.googleapis.com/css?family=Anonymous+Pro:400,700italic' rel='stylesheet' type='text/css'>
+	<link rel='stylesheet' href='static/css/app.css'>
+	<link rel='stylesheet' href='static/css/bootstrap.css'>
+	<link rel='stylesheet' href='static/css/nv.d3.css'>
+
+	<script src='static/lib/lodash.js'></script>
+	<script src='static/lib/jquery.js'></script>
+	<script src='static/lib/d3.js'></script>
+	<script src='static/lib/nv.d3.js'></script>
+	<script src='static/lib/angular.js'></script>
+	<script src='static/lib/angular-nvd3.js'></script>
+	<script src='static/lib/angular-google-maps.js'></script>
+	<script src='static/lib/colorbrewer.js'></script>
+
+	<script src='static/js/app.js'></script>
+</head>
+<body ng-controller='homeCtrl'>
+	<div class='header-container'>
+		<h1>NYC CRIME EXPLORER</h1>
+	</div>
+	<div class='row'>
+		<ui-gmap-google-map class='col-md-8' options='map.options' center='map.center' draggable='true' zoom='map.zoom'>
+			<ui-gmap-layer namespace='visualization' type='HeatmapLayer' show='enabledLayers.burglary' onCreated='map.burglaryLayerCallback'></ui-gmap-layer>
+
+			<ui-gmap-layer namespace='visualization' type='HeatmapLayer' show='enabledLayers.felony_assault' onCreated='map.felony_assaultLayerCallback'></ui-gmap-layer>
+			<ui-gmap-layer namespace='visualization' type='HeatmapLayer' show='enabledLayers.grand_larceny' onCreated='map.grand_larcenyLayerCallback'></ui-gmap-layer>
+			<ui-gmap-layer namespace='visualization' type='HeatmapLayer' show='enabledLayers.grand_larceny_motor' onCreated='map.grand_larceny_motorLayerCallback'></ui-gmap-layer>
+			<ui-gmap-layer namespace='visualization' type='HeatmapLayer' show='enabledLayers.murder' onCreated='map.murderLayerCallback'></ui-gmap-layer>
+			<ui-gmap-layer namespace='visualization' type='HeatmapLayer' show='enabledLayers.rape' onCreated='map.rapeLayerCallback'></ui-gmap-layer>
+			<ui-gmap-layer namespace='visualization' type='HeatmapLayer' show="enabledLayers.robbery" onCreated='map.robberyLayerCallback'></ui-gmap-layer>
+		</ui-gmap-google-map>
+		<div class='col-md-4'>
+			<nvd3 options='chartoptions' data='crimestats'></nvd3>
+		</div>
+	</div>
+</div>
+</body>
+</html>
