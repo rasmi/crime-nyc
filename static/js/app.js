@@ -123,9 +123,9 @@ angular.module('nyc-crime', ['nvd3', 'uiGmapgoogle-maps'])
 	}
 
 	$scope.getCrimeData = function() {
-		$http.get('crimes')
+		$http.get('static/data/graph_data.json')
 			.success(function(response) {
-				$scope.crimestats = response.data;
+				$scope.crimestats = response;
 			});
 
 	}

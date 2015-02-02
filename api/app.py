@@ -1,6 +1,5 @@
-from flask import Flask, jsonify, request, make_response
-import pandas as pd
-import requests
+from flask import Flask, jsonify, make_response
+#import pandas as pd
 import json
 
 app = Flask(__name__)
@@ -35,16 +34,17 @@ def prepare_data():
 	#totals_by_crime = pd.pivot_table(crime_by_month, values='properties.TOT', index=['properties.MO'], columns=['properties.CR'], aggfunc='sum')
 	#stacked_graph_data = [{'key': crime, 'color': colors[crime], 'values': [{'x': month, 'y': total} for month, total in crimestats.iteritems()]} for crime, crimestats in totals_by_crime.to_dict().iteritems()]
 	
-	global graph_data
-	graph_data = json.loads(open(app.root_path + '/data/graph_data.json').read())
+	#global graph_data
+	#graph_data = json.loads(open(app.root_path + '/data/graph_data.json').read())
+	pass
 
 
 @app.route('/')
 def home():
 	return make_response(open('static/index.html').read())
 
-@app.route('/crimes')
-def crimes():
+#@app.route('/crimes')
+#def crimes():
 	"""
 	Get graph data:
 	[
@@ -54,4 +54,4 @@ def crimes():
 		},
 	]
 	"""
-	return jsonify(data=graph_data)
+#	return jsonify(data=graph_data)
