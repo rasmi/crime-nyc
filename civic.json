@@ -1,0 +1,18 @@
+{
+        "status": "Beta",
+        "thumbnailUrl": "",
+        "bornAt": "PennApps",
+        "geography": "NYC",
+        "politicalEntity":"NYPD",
+        "type":"Web App",
+        "needs": [
+                {"need": "AngularJS Dev"},
+                {"need": "d3.js Dev"}
+        ],
+        "categories": [
+                {"category": "Community"},
+                {"category": "Open Data"},
+                {"category": "Law Enforcement"},
+                {"category": "Crime"}
+        ]
+}
